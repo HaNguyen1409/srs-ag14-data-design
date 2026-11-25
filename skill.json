@@ -1,0 +1,51 @@
+{
+  "$schema_version": 1,
+  "name": "srs-ag14-data-design",
+  "version": "1.0.0",
+  "node_id": "AG-14",
+  "kind": "agent",
+  "summary": "Agent Node AG-14 (SOP): thiết kế dữ liệu hai mức — ERD logical trong vòng pha B (sau UC, trước màn hình: bảng/cột/khóa/FK) và ERD physical ở Pha E (kiểu/index/ràng buộc từ logical). Single-source: dẫn xuất từ thực thể AG-06, field từ AG-10.",
+  "repository": "https://github.com/HaNguyen1409/srs-ag14-data-design",
+  "license": "MIT",
+  "interface": {
+    "contract": "SKILL.md — đầu vào/đầu ra là tài liệu Markdown/JSON mô tả trong skill; không gọi trực tiếp skill khác",
+    "output_artifact": null,
+    "sop_steps": [
+      {
+        "step": "11",
+        "title": "ERD logical (bảng/cột/khóa/FK/phân rã N-N, chưa kiểu vật lý/index) — dẫn xuất từ thực thể B9 + field của B10",
+        "type": "Agent",
+        "receives_from": "B9, B10; vòng ≥ 2: B17",
+        "sends_to": "B12"
+      },
+      {
+        "step": "18",
+        "title": "HỘI TỤ: chốt UC 3.0 đầy đủ + ERD logical chốt + đối chiếu UC ↔ ERD ↔ prototype đã duyệt",
+        "type": "Human Gate",
+        "receives_from": "B17, B10, B11, B12",
+        "sends_to": "B19, B20"
+      },
+      {
+        "step": "27",
+        "title": "ERD physical (kiểu/index/ràng buộc, TL-07) — nhận ERD logical (B18) làm đầu vào, không vẽ lại",
+        "type": "Agent",
+        "receives_from": "B18 (ERD logical), B19",
+        "sends_to": "B29, dev"
+      }
+    ]
+  },
+  "upstream": {
+    "srs-ag06-business-model": "^1.4.2",
+    "srs-ag10-functional-spec": "^1.0.0",
+    "srs-ag09-demo-feedback-triage": "^1.0.0",
+    "srs-ag07-screen-flow-design": "^1.0.0",
+    "srs-ag11-nfr-spec": "^1.0.0"
+  },
+  "downstream": [
+    "srs-ag07-screen-flow-design",
+    "srs-ag11-nfr-spec",
+    "srs-ag16-security-design"
+  ],
+  "orchestrates": {},
+  "runtime": null
+}
