@@ -4,6 +4,8 @@ Mọi thay đổi đáng kể của skill ghi ở đây. Định dạng theo [Ke
 
 ## [Unreleased]
 
+- Thay đổi chưa phát hành (đồng bộ 2026-11-26). Tăng `version` trong SKILL.md để phát hành.
+
 ## [1.0.0] - 2026-11-25
 
 ### Added

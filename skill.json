@@ -35,7 +35,7 @@
     ]
   },
   "upstream": {
-    "srs-ag06-business-model": "^1.4.2",
+    "srs-ag06-business-model": "^1.5.0",
     "srs-ag10-functional-spec": "^1.0.0",
     "srs-ag09-demo-feedback-triage": "^1.0.0",
     "srs-ag07-screen-flow-design": "^1.0.0",

@@ -150,6 +150,16 @@ TL-07 logical sở hữu: bảng TBL (gắn ENT), cột, khoá, quan hệ REL (p
 
 **Phương án C — tài liệu giữ nội dung, RTM giữ mã, nhãn, phân loại và liên kết (20/11/2026).** Sheet D của RTM TL-04 chỉ có mã, nhãn (tên hoặc câu phát biểu), phân loại dùng để tính và các liên kết; định nghĩa, mô tả, thuộc tính chỉ ở tài liệu này. Bảng của tài liệu không có cột liên kết hay phân loại đã ở RTM, không có dòng độ phủ hay mức sẵn sàng; mã + tên được lặp làm nhãn tham chiếu. Liên kết vẫn khai báo ở JSON đầu ra để Code Node đổ vào RTM (H29). B-CHECK báo lỗi khi vi phạm.
 
+### Quy tắc viết cho người đọc (TL-02 hướng dẫn §7)
+
+Phần Markdown được nhúng nguyên văn thành một chương của SRS, nên viết đúng ngay ở đây; SRS không sửa lại. Quy tắc áp dụng cho phần thân (bảng thông tin đầu tài liệu và lịch sử phiên bản bị bỏ khi nhúng). Đủ tám quy tắc V1–V8 và danh sách cụm cần tìm trước khi xuất: `07-Chuan-tai-lieu/templates/TL-02_huong-dan-lap-rap-SRS.md` §7. Năm điểm hay sai:
+
+- **Người đọc:** 11 nhóm, từ khách hàng, chủ nghiệp vụ tới lập trình viên, kiểm thử, người dùng cuối (danh sách ở mẫu TL-02 §1.2). Cột «Ý nghĩa», câu dẫn viết tiếng Việt thông dụng; tên bảng, tên cột giữ đúng tên kỹ thuật vì người lập trình, kiểm thử cần đúng tên đó.
+- **Câu dẫn** nói bảng hoặc mục dưới là gì và đọc thế nào, không nói quy trình nội bộ của bên lập: không «nơi duy nhất», «không chép lại», «vòng 1», «brief», «baseline», «hội tụ», số bước Bxx, mã AG-xx. Ghi chú sở hữu, MECE trong khung đầu ra ở trên là hướng dẫn cho Agent, không in ra. Trỏ sang tài liệu khác chỉ ghi mã tài liệu và số mục (vd «RTM <mã tài liệu> (sheet D08_ENT)»).
+- **Viết tắt và tiền tố mã:** mọi chữ viết tắt, tiền tố mã, ký hiệu trong tài liệu (TBL, REL, `*`, `→`, (+)…) phải có trong `glossary` / `id_legend` của project.json (SRS §1.4) hoặc ở §2 Quy ước. Dùng cái mới thì bổ sung vào `glossary` / `id_legend` cùng lúc.
+- **Trạng thái, phân loại dữ liệu** in ra dạng nhãn thường trong bảng đọc, không in mã HOA_GẠCH_DƯỚI; mã giữ trong JSON (giá trị enum thật của một cột thì giữ nguyên và ghi rõ là giá trị lưu trong cột).
+- **Một ký hiệu một nghĩa, một khái niệm một tên:** không dùng ký hiệu trùng với tiền tố mã đã có (vd «(GĐ)» trùng GD-xx giả định); một thực thể một tên ở mọi mục, khớp tên ở mô hình nghiệp vụ B9.
+
 ## [HUMAN-IN-THE-LOOP GATE]
 
 | Mã | Điều kiện | Mức |
